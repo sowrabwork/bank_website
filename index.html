@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOKINNI BANK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loginPage" id="loginPage">
+        <h1 class="centertext">Wellcome to our FOKINNI Bank</h1>
+        <br>
+        <div class="shawdowBox">
+            <h1>Login</h1>
+            <input type="email" class="form-control" placeholder="email">
+            <br>
+            <input type="password" class="form-control" placeholder="password">
+            <br>
+            <button class="btn btn-success" id="logBtn">Enter</button>
+        </div>
+    </div>
+
+    <div class="row" id="balancePage">
+        <h1>balance page</h1>
+        <div class="col-md-4">
+            <div class="diposit smallBox col-md-4">
+            <p>Diposit</p>
+            <h2 class="centertext">$<span id="dipositShow">00</span></h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="withdrow smallBox col-md-4">
+            <p>withdrow</p>
+            <h2 class="centertext"  id="withdrow">$<span id="withdrawShow">00</span></h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="balance smallBox col-md-4" id="balance">
+            <p>Balance</p>
+            <h2 class="centertext">$<span id="balanceShow">1200</span></h2>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="dipositbox shawdowBox">
+            <h4>deposit</h4>
+            <input type="number" class="form-control" placeholder="$ amount you want to deposit" id="dipositInput">
+            <br>
+            <button class="btn btn-success" id="dipositBtn">Enter</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="withdrawbox shawdowBox">
+            <h4>withdrow</h4>
+            <input type="number" class="form-control" placeholder="$ amount you want to withdrow" id="withdrawInput">
+            <br>
+            <button class="btn btn-success" id="withdrawBtn">Enter</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.getElementById('logBtn').addEventListener('click',function(){
+            document.getElementById('balancePage').style.display='flex';
+            document.getElementById('loginPage').style.display='none';
+        })
+
+        function updateInfo(btnId)
+        {
+            var balanceShow=document.getElementById('balanceShow');
+            var dipositShow=document.getElementById('dipositShow');
+            var withdrawShow=document.getElementById('withdrawShow');
+            var dipositInput=document.getElementById('dipositInput');
+            var withdrawInput=document.getElementById('withdrawInput');
+            if(btnId=='dipositBtn'){
+                dipositShow.innerText=parseFloat(dipositShow.textContent)+parseFloat(dipositInput.value);
+                balanceShow.innerText=parseFloat(balanceShow.textContent)+parseFloat(dipositInput.value);
+            }
+            else
+            {
+                withdrawShow.innerText=parseFloat(withdrawShow.textContent)+parseFloat(withdrawInput.value);
+                balanceShow.innerText=parseFloat(balanceShow.textContent)-parseFloat(withdrawInput.value);
+            }
+
+            dipositInput.value='';
+            withdrawInput.value='';
+        }
+      
+        document.getElementById('dipositBtn').addEventListener('click',()=>updateInfo('dipositBtn'));
+        document.getElementById('withdrawBtn').addEventListener('click',()=>updateInfo('withdrawBtn'));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+body{
+    margin: 80px;
+    text-transform: uppercase;
+}
+
+.centertext{
+    text-align: center;
+}
+
+.shawdowBox{
+    box-shadow: 5px 5px 10px black;
+    border-radius: 10px;
+    margin:60px;
+    padding: 50px;
+}
+
+.smallBox{
+    margin:60px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    width: 70%;
+    color: white;
+}
+
+.diposit{
+    background-image: linear-gradient(90deg,rgb(120, 11, 11),rgb(236, 122, 141));
+}
+.withdrow{
+    background-image: linear-gradient(90deg,rgb(0, 0, 144),rgb(106, 173, 255));
+}
+.balance{
+    background-image: linear-gradient(90deg,rgb(107, 5, 107),rgb(228, 155, 228));
+}
+#balancePage{
+    display: none;
+}
+
+
+
